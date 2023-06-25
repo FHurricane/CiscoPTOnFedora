@@ -26,12 +26,12 @@ installer_name_3=Cisco*.deb
 path_to_pt=$(find /home -name $installer_name_1 -o -name $installer_name_2 -o -name $installer_name_3)
 
 if [[ -z "$path_to_pt" ]]; then
-    echo -e "\n\n${Red}${Bold}Installer di Cisco Packet Tracer non trovato in /home $installer_name_1.$Color_Off\n"
-    echo -e "Puoi scaricare Cisco Packet Tracer da: ${Cyan}https://www.netacad.com/portal/resources/packet-tracer${Color_Off} (E' richiesto il login)."
+    echo -e "Installer di Cisco Packet Tracer non trovato in /home $installer_name_1"
+    echo -e "Puoi scaricare Cisco Packet Tracer da: https://www.netacad.com/portal/resources/packet-tracer (E' richiesto il login)."
     exit 1
 else
     echo -e "\nCisco Packet Tracer è stato trovato nelle seguenti Directoryes:"
-    echo -e "${Green}${Bold}$path_to_pt${Color_Off}\n"
+    echo -e "$path_to_pt$"
     sleep 3
 fi
 
