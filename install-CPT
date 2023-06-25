@@ -1,0 +1,125 @@
+#!/bin/bash
+
+echo -e "***********************************************************"
+echo -e "*****               Fedora 37 - 38                    *****"
+echo -e "***** Installazione di Cisco Packet Tracer per Fedora *****"
+echo -e "*****                Fabio Costa                      *****"
+echo -e "*****           Leggi il file README!                 *****"
+echo -e "***********************************************************"
+
+#Verifico se si possiedono i privilegi di root per eseguire l'installazione
+if [ $UID -ne 0 ]; then
+        echo "Richiesto il privilegio root per eseguire l'installazione di Cisco Packet Tracer, 'sudo'"
+        exit 1
+fi
+
+#Installazione dipendenze
+echo -e "Installazione dipendenze"
+
+sudo dnf -y install binutils qt5-qt{multimedia,webengine,networkauth,websockets,webchannel,script,location,svg,speech}
+
+#
+echo -e "Cerco il file di installazione .deb di Cisco Packet Tracer"
+installer_name_1=CiscoPacketTracer*Ubuntu_64bit.deb
+installer_name_2=Cisco_Packet_Tracer_*_Ubuntu_64bit_*.deb
+installer_name_3=Cisco*.deb
+path_to_pt=$(find /home -name $installer_name_1 -o -name $installer_name_2 -o -name $installer_name_3)
+
+if [[ -z "$path_to_pt" ]]; then
+    echo -e "\n\n${Red}${Bold}Installer di Cisco Packet Tracer non trovato in /home $installer_name_1.$Color_Off\n"
+    echo -e "Puoi scaricare Cisco Packet Tracer da: ${Cyan}https://www.netacad.com/portal/resources/packet-tracer${Color_Off} (E' richiesto il login)."
+    exit 1
+else
+    echo -e "\nCisco Packet Tracer è stato trovato nelle seguenti Directoryes:"
+    echo -e "${Green}${Bold}$path_to_pt${Color_Off}\n"
+    sleep 3
+fi
+
+
+# Converto il file trovato in un formato piu leggibile per l'installer
+
+echo -e "Converto il file.deb in un formato più leggibile"
+
+mv $installer_name_3 cpt821.deb
+
+echo -e "File Convertito e rinominato con successo"
+
+#Decomprimo il file di installazione .deb
+
+echo -e "Decomprimo il file cpt821.deb"
+
+ar -xv cpt821.deb
+mkdir data && tar -C data -Jxf data.tar.xz
+cd data
+
+#Rimozione di installazioni di Cisco Packet Tracer precedenti
+
+echo -e "Rimozione installazioni di Cisco Packet Tracer precedenti!!"
+xdg-desktop-menu uninstall /usr/share/applications/cisco-*.desktop && update-mime-database /usr/share/mime
+gtk-update-icon-cache --force /usr/share/icons/gnome
+rm -rf /opt/pt && rm -f /usr/local/bin/packettracer
+
+#Copia degli archivi di Cisco Packet Tracer
+
+echo -e "Copia degli archivi di Cisco Packet Tracer"
+
+yes | cp -r usr /
+yes | cp -r opt /
+
+#Creazione delle scorciatoie di Cisco Packet Tracer
+
+echo -e "Creazione delle scorciatoie di Cisco Packet Tracer"
+
+cat <<EOF | tee /usr/share/applications/cisco-pt821.desktop
+[Desktop Entry]
+Type=Application
+Exec=/opt/pt/packettracer %f
+Name=Packet Tracer 8.2.1
+Icon=/opt/pt/art/app.png
+Terminal=false
+StartupNotify=true
+MimeType=application/x-pkt;application/x-pka;application/x-pkz;application/x-pks;application/x-pksz;
+EOF
+#
+cat <<EOF | tee /usr/share/applications/cisco-ptsa821.desktop
+[Desktop Entry]
+Type=Application
+Exec=/opt/pt/packettracer -uri=%u
+Name=Packet Tracer 8.2.1
+Icon=/opt/pt/art/app.png
+Terminal=false
+StartupNotify=true
+NoDisplay=true
+MimeType=x-scheme-handler/pttp;
+EOF
+
+#Aggiornamento icone e associazione files
+
+echo -e "Aggiorno le icone e le associazioni files"
+
+xdg-desktop-menu install /usr/share/applications/cisco-pt821.desktop
+xdg-desktop-menu install /usr/share/applications/cisco-ptsa821.desktop
+update-mime-database /usr/share/mime
+gtk-update-icon-cache --force /usr/share/icons/gnome
+xdg-mime default cisco-ptsa821.desktop x-scheme-handler/pttp
+
+#Link di Cisco Packet Tracer
+
+echo "Creazione Link di Cisco Packet Tracer"
+
+ln -sf /opt/pt/packettracer /usr/local/bin/packettracer
+
+#Correzione permessi
+
+echo "Abilitazione e correzione permessi per Cisco Packet Tracer"
+
+chown root:root /opt/pt/bin/updatepttp && chmod 4755 /opt/pt/bin/updatepttp
+
+echo -e "***********************************************************"
+echo -e "*****                                                 *****"
+echo -e "*****      Installazione Avvenuta con successo!!      *****"
+echo -e "*****                                                 *****"
+echo -e "***********************************************************"
+echo ""
+echo""
+#EOF

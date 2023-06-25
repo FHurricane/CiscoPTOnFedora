@@ -1,0 +1,123 @@
+Installation Script - Cisco Packet Tracer 821 for Fedora 37-38
+Author: Costa Fabio
+
+
+
+Italian Language
+
+Script di Installazione Bash per Cisco Packet Tracer 821 su Distribuzione Fedora 37-38
+
+Scaricate Cisco Packet Tracer dal sito Netacad.com (Login richiesto)
+
+Andate sulla Home e create una cartella chiamata /PT
+
+Spostate nella cartella /home/user/PT il file .deb di Cisco Packet Tracer 821
+
+Mettete il file install-CPT.sh nella cartella /home/user/PT/
+
+rendete eseguibile il file install-CPT.sh con il seguente comando
+
+sudo chmod +x install-CPT.sh
+
+Lanciate il comando per l'installazione di Cisco Packet Tracer 821
+./install-CPT.sh
+
+ad installazione avvenuta potete utilizzare il vostro Cisco Packet Tracer su Fedora
+
+------------------------------------------------------------------------------------------------
+
+English Language
+
+Installation Bash Script for Cisco Packet Tracer 821 on Linux Fedora Distribution
+
+Download Cisco Packet Tracer from netacad.com website
+
+Go to home folder and create /PT/ Folder inside
+
+Move to /home/user/PT/ folder and copy inside the Cisco Packet Tracer 821 file downloaded from netacad.com
+
+Copy install-CPT.sh file inside the folder /home/user/PT/
+
+Now, change chmod execution parameter for install-CPT.sh file with the next command.
+
+sudo chmod +x install-CPT.sh
+
+Launch command for starting Cisco Packet Tracer installation Bash Script.
+
+After execution the script, Cisco Packet Tracer has been installed!
+
+-------------------------------------------------------------------------------------------------
+
+Deutch Language
+
+Bash-Installationsskript für Cisco Packet Tracer 821 auf der Fedora 37-38-Distribution
+
+Laden Sie Cisco Packet Tracer von Netacad.com herunter (Anmeldung erforderlich)
+
+Gehen Sie zu Home und erstellen Sie einen Ordner mit dem Namen /PT
+
+Verschieben Sie die .deb-Datei des Cisco Packet Tracer 821 in den Ordner /home/user/PT
+
+Legen Sie die Datei install-CPT.sh im Ordner /home/user/PT/ ab
+
+Machen Sie die Datei install-CPT.sh mit dem folgenden Befehl ausführbar
+
+sudo chmod +x install-CPT.sh
+
+Führen Sie den Befehl aus, um Cisco Packet Tracer 821 zu installieren
+./install-CPT.sh
+
+Nach der Installation können Sie Ihren Cisco Packet Tracer auf Fedora verwenden
+
+--------------------------------------------------------------------------------------------------
+
+French Language
+
+Script d'installation bash pour Cisco Packet Tracer 821 sur Fedora 37-38 Distribution
+
+Téléchargez Cisco Packet Tracer sur Netacad.com (Connexion requise)
+
+Allez dans Accueil et créez un dossier appelé /PT
+
+Déplacez le fichier Cisco Packet Tracer 821 .deb vers le dossier /home/user/PT
+
+Placez le fichier install-CPT.sh dans le dossier /home/user/PT/
+
+rendre le fichier install-CPT.sh exécutable avec la commande suivante
+
+sudo chmod +x install-CPT.sh
+
+Exécutez la commande pour installer Cisco Packet Tracer 821
+./install-CPT.sh
+
+après l'installation, vous pouvez utiliser votre Cisco Packet Tracer sur Fedora
+
+---------------------------------------------------------------------------------------------------
+
+Espanol Language
+
+Script de instalación de Bash para Cisco Packet Tracer 821 en Fedora 37-38 Distribution
+
+Descargue Cisco Packet Tracer de Netacad.com (se requiere inicio de sesión)
+
+Vaya a Inicio y cree una carpeta llamada /PT
+
+Mueva el archivo .deb de Cisco Packet Tracer 821 a la carpeta /home/user/PT
+
+Coloque el archivo install-CPT.sh en la carpeta /home/user/PT/
+
+haga que el archivo install-CPT.sh sea ejecutable con el siguiente comando
+
+sudo chmod +x install-CPT.sh
+
+Ejecute el comando para instalar Cisco Packet Tracer 821
+./instalar-CPT.sh
+
+después de la instalación, puede usar su Cisco Packet Tracer en Fedora
+
+#EoF
+
+
+
+
+
