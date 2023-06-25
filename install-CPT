@@ -31,7 +31,7 @@ if [[ -z "$path_to_pt" ]]; then
     exit 1
 else
     echo -e "\nCisco Packet Tracer è stato trovato nelle seguenti Directoryes:"
-    echo -e "$path_to_pt$"
+    echo -e "$path_to_pt"
     sleep 3
 fi
 
