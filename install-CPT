@@ -30,7 +30,7 @@ if [[ -z "$path_to_pt" ]]; then
     echo -e "Puoi scaricare Cisco Packet Tracer da: https://www.netacad.com/portal/resources/packet-tracer (E' richiesto il login)."
     exit 1
 else
-    echo -e "\nCisco Packet Tracer è stato trovato nelle seguenti Directoryes:"
+    echo -e "Cisco Packet Tracer è stato trovato nelle seguenti Directoryes:"
     echo -e "$path_to_pt"
     sleep 3
 fi
